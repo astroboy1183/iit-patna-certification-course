@@ -1,6 +1,9 @@
-# IIT Patna Certification Course
+# Certificate Program in Generative AI & Agentic AI for Developers (IIT Patna)
 
-My code, notes, and practice assignments from the IIT Patna certification course, starting with Python programming.
+My code, notes, and practice assignments from the **Certificate Program in Generative AI & Agentic AI for Developers**, a 6-month program offered by IIT Patna jointly with USDC Projects India Pvt Ltd. The course starts with Python programming.
+
+- [Course page](https://certifications.iitpatna.com/generative-ai-for-developers)
+- [Brochure (PDF)](https://cep.iitp.ac.in/GenAi_for_Developers_Brochure-.pdf)
 
 ## Progress
 
