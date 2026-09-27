@@ -1,0 +1,21 @@
+# IDE settings
+.idea/
+.vscode/
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python bytecode / caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
