@@ -19,8 +19,12 @@ My code, notes, and practice assignments from the **Certificate Program in Gener
 | 6 | [6_user_input_and_type_casting_practice.py](Python%20Programming/6_user_input_and_type_casting_practice.py) | Practice | Calculating age with `datetime`, arithmetic on user input, casting between `float`, `int`, and `str` |
 | 7 | [7_operators.py](Python%20Programming/7_operators.py) | Lesson | Arithmetic, comparison, and logical operators (`and`, `or`, `not`) |
 | 8 | [8_operators_practice.py](Python%20Programming/8_operators_practice.py) | Practice | Arithmetic on user input, conditions with comparison and logical operators, conditional expressions, divisibility checks |
+| 9 | [9_strings.py](Python%20Programming/9_strings.py) | Lesson | Indexing, slicing, concatenation and repetition, `in`/`not in`, `len()`, string methods (`upper`, `lower`, `strip`, `split`) |
+| 10 | [10_strings_practice.py](Python%20Programming/10_strings_practice.py) | Practice | Slicing and reversing, `upper()`, `split()`, `count()`, `replace()`, `endswith()` with `if`/`else` |
+| 11 | [11_debugging.py](Python%20Programming/11_debugging.py) | Lesson | A recap program combining everything so far: output, input and casting, operators, and string methods |
+| 12 | [12_debugging_practice.py](Python%20Programming/12_debugging_practice.py) | Practice | Finding and fixing type errors with type casting, calculating the year you turn 100 |
 
-**Topics covered so far:** output formatting, variables and data types, user input and type casting, and operators.
+**Topics covered so far:** output formatting, variables and data types, user input and type casting, operators, strings, and debugging.
 
 ## Running the code
 
