@@ -27,9 +27,6 @@ print("India's capital is \t Delhi.\n This should be in a new line.")
 # Single line comment
 
 """
-Multiple line comment
-"""
-
-"""
-Multiple line comment
+Multiple 
+line comment
 """
