@@ -1,44 +1,111 @@
 # Certificate Program in Generative AI & Agentic AI for Developers (IIT Patna)
 
-My code, notes, and practice assignments from the **Certificate Program in Generative AI & Agentic AI for Developers**, a 6-month program offered by IIT Patna jointly with USDC Projects India Pvt Ltd. The course starts with Python programming.
+My code, notes, and practice assignments from the **Certificate Program in Generative AI & Agentic AI for Developers**, a 6-month program offered by IIT Patna jointly with USDC Projects India Pvt Ltd.
 
 - [Course page](https://certifications.iitpatna.com/generative-ai-for-developers)
 - [Brochure (PDF)](https://cep.iitp.ac.in/GenAi_for_Developers_Brochure-.pdf)
 
-## Progress
+## Repository layout
 
-### Python Programming
+| Folder | Contents |
+|---|---|
+| [01_Python_Programming](01_Python_Programming) | Python foundations: numbered lessons and practice assignments |
+| [02_module_1](02_module_1) | Module 1, Foundations of Generative AI: calling LLMs through APIs and locally, a CLI chatbot, and the GenAI workflow project |
+
+Each folder (and each sub-project in `02_module_1`) has its own `requirements.txt` and its own virtual environment. See [Setup](#setup).
+
+---
+
+## 01 · Python Programming
+
+Files are numbered in the order they were covered. Lesson files contain code written while following the course. Practice files (`*_practice.py`) contain assignments: the questions are in the docstring at the top of each file, followed by my solutions.
 
 | # | File | Type | Topics covered |
 |---|------|------|----------------|
-| 1 | [1_print_and_escape_sequences.py](Python%20Programming/1_print_and_escape_sequences.py) | Lesson | `print()`, the `sep` and `end` parameters, f-strings, escape sequences (`\n`, `\t`, `\'`), comments |
-| 2 | [2_print_and_escape_sequences_practice.py](Python%20Programming/2_print_and_escape_sequences_practice.py) | Practice | Commenting code, formatting output with escape sequences, `sep`/`end` in a single `print()` |
-| 3 | [3_variables_and_data_types.py](Python%20Programming/3_variables_and_data_types.py) | Lesson | Variables, data types (`str`, `int`, `float`, `bool`), `type()`, Python keywords |
-| 4 | [4_variables_and_data_types_practice.py](Python%20Programming/4_variables_and_data_types_practice.py) | Practice | f-strings, predicting types, converting a string to an `int`, invalid variable names and their errors, dynamic typing |
-| 5 | [5_user_input.py](Python%20Programming/5_user_input.py) | Lesson | `input()`, converting user input with `int()` |
-| 6 | [6_user_input_and_type_casting_practice.py](Python%20Programming/6_user_input_and_type_casting_practice.py) | Practice | Calculating age with `datetime`, arithmetic on user input, casting between `float`, `int`, and `str` |
-| 7 | [7_operators.py](Python%20Programming/7_operators.py) | Lesson | Arithmetic, comparison, and logical operators (`and`, `or`, `not`) |
-| 8 | [8_operators_practice.py](Python%20Programming/8_operators_practice.py) | Practice | Arithmetic on user input, conditions with comparison and logical operators, conditional expressions, divisibility checks |
-| 9 | [9_strings.py](Python%20Programming/9_strings.py) | Lesson | Indexing, slicing, concatenation and repetition, `in`/`not in`, `len()`, string methods (`upper`, `lower`, `strip`, `split`) |
-| 10 | [10_strings_practice.py](Python%20Programming/10_strings_practice.py) | Practice | Slicing and reversing, `upper()`, `split()`, `count()`, `replace()`, `endswith()` with `if`/`else` |
-| 11 | [11_debugging.py](Python%20Programming/11_debugging.py) | Lesson | A recap program combining everything so far: output, input and casting, operators, and string methods |
-| 12 | [12_debugging_practice.py](Python%20Programming/12_debugging_practice.py) | Practice | Finding and fixing type errors with type casting, calculating the year you turn 100 |
+| 1 | [1_print_and_escape_sequences.py](01_Python_Programming/1_print_and_escape_sequences.py) | Lesson | `print()`, `sep` and `end`, f-strings, escape sequences, comments |
+| 2 | [2_print_and_escape_sequences_practice.py](01_Python_Programming/2_print_and_escape_sequences_practice.py) | Practice | Commenting code, formatting output with escape sequences, `sep`/`end` in one `print()` |
+| 3 | [3_variables_and_data_types.py](01_Python_Programming/3_variables_and_data_types.py) | Lesson | Variables, `str`/`int`/`float`/`bool`, `type()`, Python keywords |
+| 4 | [4_variables_and_data_types_practice.py](01_Python_Programming/4_variables_and_data_types_practice.py) | Practice | Predicting types, string-to-`int` conversion, invalid variable names, dynamic typing |
+| 5 | [5_user_input.py](01_Python_Programming/5_user_input.py) | Lesson | `input()`, converting input with `int()` |
+| 6 | [6_user_input_and_type_casting_practice.py](01_Python_Programming/6_user_input_and_type_casting_practice.py) | Practice | Calculating age with `datetime`, arithmetic on input, casting between `float`, `int`, and `str` |
+| 7 | [7_operators.py](01_Python_Programming/7_operators.py) | Lesson | Arithmetic, comparison, and logical operators |
+| 8 | [8_operators_practice.py](01_Python_Programming/8_operators_practice.py) | Practice | Conditions with comparison and logical operators, conditional expressions, divisibility checks |
+| 9 | [9_strings.py](01_Python_Programming/9_strings.py) | Lesson | Indexing, slicing, concatenation, `in`, `len()`, string methods |
+| 10 | [10_strings_practice.py](01_Python_Programming/10_strings_practice.py) | Practice | Slicing and reversing, `split()`, `count()`, `replace()`, `endswith()` |
+| 11 | [11_debugging.py](01_Python_Programming/11_debugging.py) | Lesson | A recap program combining output, input, casting, operators, and strings |
+| 12 | [12_debugging_practice.py](01_Python_Programming/12_debugging_practice.py) | Practice | Finding and fixing type errors with type casting |
+| 13 | [13_lists.py](01_Python_Programming/13_lists.py) | Lesson | Creating and indexing lists, `append`, `insert`, `remove`, `pop`, `sort`, `reverse`, `extend`, slicing, nested lists |
+| 14 | [14_lists_practice.py](01_Python_Programming/14_lists_practice.py) | Practice | List methods, building lists from user input, reverse slicing, membership checks, nested lists |
+| 15 | [15_loops_if_else_.py](01_Python_Programming/15_loops_if_else_.py) | Lesson | `if`/`elif`/`else`, `for` loops over lists, type checks inside loops |
+| 16 | [16_loops_if_else_practice.py](01_Python_Programming/16_loops_if_else_practice.py) | Practice | Even/odd checks, `continue`, `while` with `break`, sums with loops, counting vowels, a 3-attempt login with `getpass` |
+| 17 | [17_docstrings_practice.py](01_Python_Programming/17_docstrings_practice.py) | Practice | Functions with docstrings, f-string formatting, a report card |
+| 18 | [18_functions_practice.py](01_Python_Programming/18_functions_practice.py) | Practice | Functions, default arguments, `*args`, `**kwargs`, a multi-operation `calculate()` |
+| 19 | [19_tuples_practice.py](01_Python_Programming/19_tuples_practice.py) | Practice | Tuple indexing and slicing, `count()`, `index()`, unpacking, immutability |
+| 20 | [20_dictionaries_practice.py](01_Python_Programming/20_dictionaries_practice.py) | Practice | Looping over key-value pairs, adding keys, `.get()`, character frequency counts, nested dictionaries |
+| 21 | [21_sets_practice.py](01_Python_Programming/21_sets_practice.py) | Practice | Removing duplicates, intersection, difference, fast membership checks |
 
-**Topics covered so far:** output formatting, variables and data types, user input and type casting, operators, strings, and debugging.
+---
+
+## 02 · Module 1: Foundations of Generative AI
+
+### [01_API_VS_local](02_module_1/01_API_VS_local): calling LLMs through cloud APIs and locally
+
+| File | What it does |
+|---|---|
+| [openai_app.py](02_module_1/01_API_VS_local/openai_app.py) | Chat completion with the OpenAI SDK |
+| [gemini_app.py](02_module_1/01_API_VS_local/gemini_app.py) | Text generation with the Gemini SDK (`google-generativeai`) |
+| [google_model_availability.py](02_module_1/01_API_VS_local/google_model_availability.py) | Lists the Gemini models available to an API key that support `generateContent` |
+| [ollama_app.py](02_module_1/01_API_VS_local/ollama_app.py) | Runs a local model (Mistral) through Ollama |
+| [hf_app.py](02_module_1/01_API_VS_local/hf_app.py) | Calls an open model through Hugging Face Inference Providers, with notes on every error hit along the way and how it was fixed |
+| [compare_models.py](02_module_1/01_API_VS_local/compare_models.py) | Sends the same prompt to OpenAI, Gemini, Ollama, and Hugging Face to compare their answers |
+| [SDK_CHEATSHEET.md](02_module_1/01_API_VS_local/SDK_CHEATSHEET.md) | Side-by-side reference for the OpenAI, Anthropic, Gemini, Ollama, and Hugging Face SDKs, plus common errors |
+
+### [02_chatbot](02_module_1/02_chatbot): a CLI chatbot with switchable providers
+
+A command-line chatbot that reads the provider and model from [config.json](02_module_1/02_chatbot/config.json), so it can switch between OpenAI and Gemini without code changes.
+
+- [main.py](02_module_1/02_chatbot/main.py): loads the config and `.env`, and runs the chat loop
+- [llm_provider.py](02_module_1/02_chatbot/llm_provider.py): an `LLMProvider` class that wraps both SDKs behind one `chat()` method
+
+### GenAI workflow project (in progress)
+
+A project to classify and evaluate customer-support call transcripts with LLMs.
+
+- [config/config.json](02_module_1/config/config.json): models and temperature, evaluation criteria (`tone_empathy`, `knowledge_accuracy`, `resolution_quality`, scored 1–5), and classification labels (`billing`, `claims`, `complaint`, `general_query`)
+- [data/](02_module_1/data): sample call transcripts
+- [experiment.ipynb](02_module_1/experiment.ipynb): the notebook where the workflow is being built
+
+---
+
+## Setup
+
+Each project folder has its own virtual environment, built from its own `requirements.txt` with Python 3.13:
+
+```bash
+cd 02_module_1/02_chatbot
+python3.13 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+The GenAI projects read API keys from a `.env` file in the project folder, which is not committed:
+
+```
+OPENAI_API_KEY=...
+GEMINI_API_KEY=...
+HUGGING_FACE_API_KEY=...
+```
+
+Local models need [Ollama](https://ollama.com) installed and the model downloaded, e.g. `ollama pull mistral`.
 
 ## Running the code
 
-The files need Python 3. Each file runs on its own:
-
 ```bash
-cd "Python Programming"
-python3 8_operators_practice.py
+# Python practice (each file runs on its own; practice files ask for input)
+cd 01_Python_Programming
+python 8_operators_practice.py
+
+# CLI chatbot
+cd 02_module_1/02_chatbot
+python main.py
 ```
-
-The practice files ask for input as they run.
-
-## Repository layout
-
-- Files are numbered in the order they were covered in the course.
-- Lesson files contain code written while following the course.
-- Practice files (`*_practice.py`) contain assignments. The questions are in the docstring at the top of each file, followed by my solutions.
