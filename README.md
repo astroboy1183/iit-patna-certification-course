@@ -10,9 +10,9 @@ My code, notes, and practice assignments from the **Certificate Program in Gener
 | Folder | Contents |
 |---|---|
 | [01_Python_Programming](01_Python_Programming) | Python foundations: numbered lessons and practice assignments |
-| [02_module_1](02_module_1) | Module 1, Foundations of Generative AI: calling LLMs through APIs and locally, a CLI chatbot, and the GenAI workflow project |
+| [02_genai_program](02_genai_program) | The GenAI program week by week: lecture notes, hands-on projects, and live-session projects |
 
-Each folder (and each sub-project in `02_module_1`) has its own `requirements.txt` and its own virtual environment. See [Setup](#setup).
+Each project folder has its own `requirements.txt` and its own virtual environment. See [Setup](#setup).
 
 ---
 
@@ -46,34 +46,49 @@ Files are numbered in the order they were covered. Lesson files contain code wri
 
 ---
 
-## 02 · Module 1: Foundations of Generative AI
+## 02 · GenAI program, week by week
 
-### [01_API_VS_local](02_module_1/01_API_VS_local): calling LLMs through cloud APIs and locally
+Full index with lecture notes and key ideas: [02_genai_program/README.md](02_genai_program/README.md).
+
+| Week | Theory notes | Hands-on |
+|---|---|---|
+| [Week 1](02_genai_program/week_01) | [Lectures 0–4](02_genai_program/week_01/notes): roadmap, what GenAI is, ML vs GenAI, how LLMs work, Responsible AI | — |
+| [Week 2](02_genai_program/week_02) | [Lecture 5](02_genai_program/week_02/notes): the developer mindset | Cloud APIs vs local models · CLI chatbot · Streamlit chat assistant (below) |
+| [Week 3](02_genai_program/week_03) | [Lectures 7–8](02_genai_program/week_03/notes): prompt tuning vs fine-tuning, LoRA and QLoRA | — |
+
+### Week 2 · [01_API_VS_local](02_genai_program/week_02/01_API_VS_local): calling LLMs through cloud APIs and locally
 
 | File | What it does |
 |---|---|
-| [openai_app.py](02_module_1/01_API_VS_local/openai_app.py) | Chat completion with the OpenAI SDK |
-| [gemini_app.py](02_module_1/01_API_VS_local/gemini_app.py) | Text generation with the Gemini SDK (`google-generativeai`) |
-| [google_model_availability.py](02_module_1/01_API_VS_local/google_model_availability.py) | Lists the Gemini models available to an API key that support `generateContent` |
-| [ollama_app.py](02_module_1/01_API_VS_local/ollama_app.py) | Runs a local model (Mistral) through Ollama |
-| [hf_app.py](02_module_1/01_API_VS_local/hf_app.py) | Calls an open model through Hugging Face Inference Providers, with notes on every error hit along the way and how it was fixed |
-| [compare_models.py](02_module_1/01_API_VS_local/compare_models.py) | Sends the same prompt to OpenAI, Gemini, Ollama, and Hugging Face to compare their answers |
-| [SDK_CHEATSHEET.md](02_module_1/01_API_VS_local/SDK_CHEATSHEET.md) | Side-by-side reference for the OpenAI, Anthropic, Gemini, Ollama, and Hugging Face SDKs, plus common errors |
+| [openai_app.py](02_genai_program/week_02/01_API_VS_local/openai_app.py) | Chat completion with the OpenAI SDK |
+| [gemini_app.py](02_genai_program/week_02/01_API_VS_local/gemini_app.py) | Text generation with the Gemini SDK (`google-generativeai`) |
+| [google_model_availability.py](02_genai_program/week_02/01_API_VS_local/google_model_availability.py) | Lists the Gemini models available to an API key that support `generateContent` |
+| [ollama_app.py](02_genai_program/week_02/01_API_VS_local/ollama_app.py) | Runs a local model (Mistral) through Ollama |
+| [hf_app.py](02_genai_program/week_02/01_API_VS_local/hf_app.py) | Calls an open model through Hugging Face Inference Providers, with notes on every error hit along the way and how it was fixed |
+| [compare_models.py](02_genai_program/week_02/01_API_VS_local/compare_models.py) | Sends the same prompt to OpenAI, Gemini, Ollama, and Hugging Face to compare their answers |
+| [SDK_CHEATSHEET.md](02_genai_program/week_02/01_API_VS_local/SDK_CHEATSHEET.md) | Side-by-side reference for the OpenAI, Anthropic, Gemini, Ollama, and Hugging Face SDKs, plus common errors |
 
-### [02_chatbot](02_module_1/02_chatbot): a CLI chatbot with switchable providers
+### Week 2 · [02_chatbot](02_genai_program/week_02/02_chatbot): a CLI chatbot with switchable providers
 
-A command-line chatbot that reads the provider and model from [config.json](02_module_1/02_chatbot/config.json), so it can switch between OpenAI and Gemini without code changes.
+A command-line chatbot that reads the provider and model from [config.json](02_genai_program/week_02/02_chatbot/config.json), so it can switch between OpenAI and Gemini without code changes.
 
-- [main.py](02_module_1/02_chatbot/main.py): loads the config and `.env`, and runs the chat loop
-- [llm_provider.py](02_module_1/02_chatbot/llm_provider.py): an `LLMProvider` class that wraps both SDKs behind one `chat()` method
+- [main.py](02_genai_program/week_02/02_chatbot/main.py): loads the config and `.env`, and runs the chat loop
+- [llm_provider.py](02_genai_program/week_02/02_chatbot/llm_provider.py): an `LLMProvider` class that wraps both SDKs behind one `chat()` method
 
-### GenAI workflow project (in progress)
+### Week 2 · [03_capstone](02_genai_program/week_02/03_capstone): a Streamlit chat assistant
 
-A project to classify and evaluate customer-support call transcripts with LLMs.
+A web chat UI with conversation memory, routing to OpenAI or Gemini from [config.json](02_genai_program/week_02/03_capstone/config.json).
 
-- [config/config.json](02_module_1/config/config.json): models and temperature, evaluation criteria (`tone_empathy`, `knowledge_accuracy`, `resolution_quality`, scored 1–5), and classification labels (`billing`, `claims`, `complaint`, `general_query`)
-- [data/](02_module_1/data): sample call transcripts
-- [experiment.ipynb](02_module_1/experiment.ipynb): the notebook where the workflow is being built
+- [app.py](02_genai_program/week_02/03_capstone/app.py): the Streamlit chat interface and session history
+- [llm_providers.py](02_genai_program/week_02/03_capstone/llm_providers.py): OpenAI and Gemini calls behind one `run_llm()` router
+
+### Live session 01 · [Call-transcript classification and QA](02_genai_program/live_sessions/01_call_transcript_qa)
+
+Built in the Sunday live session: a LangChain pipeline that classifies customer-support calls (`billing`, `claims`, `complaint`, `general_query`) and scores tone, resolution quality and knowledge accuracy with Pydantic-validated outputs.
+
+- [experiment.ipynb](02_genai_program/live_sessions/01_call_transcript_qa/experiment.ipynb): the pipeline, built step by step
+- [config/config.json](02_genai_program/live_sessions/01_call_transcript_qa/config/config.json): models, temperature, evaluation criteria and labels
+- [data/](02_genai_program/live_sessions/01_call_transcript_qa/data): sample call transcripts
 
 ---
 
@@ -82,7 +97,7 @@ A project to classify and evaluate customer-support call transcripts with LLMs.
 Each project folder has its own virtual environment, built from its own `requirements.txt` with Python 3.13:
 
 ```bash
-cd 02_module_1/02_chatbot
+cd 02_genai_program/week_02/02_chatbot
 python3.13 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -106,6 +121,6 @@ cd 01_Python_Programming
 python 8_operators_practice.py
 
 # CLI chatbot
-cd 02_module_1/02_chatbot
+cd 02_genai_program/week_02/02_chatbot
 python main.py
 ```
