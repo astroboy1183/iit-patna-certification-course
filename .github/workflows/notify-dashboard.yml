@@ -1,0 +1,24 @@
+name: Notify progress dashboard
+
+# On every push, ask the progress dashboard repo to rebuild:
+# https://github.com/astroboy1183/iit-patna-progress-dashboard
+# Needs a DASHBOARD_TOKEN secret (a fine-grained token for that repo with Contents: read and write).
+# Without the secret this step is skipped and the dashboard still updates on its hourly schedule.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      DASHBOARD_TOKEN: ${{ secrets.DASHBOARD_TOKEN }}
+    steps:
+      - name: Trigger dashboard rebuild
+        if: env.DASHBOARD_TOKEN != ''
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $DASHBOARD_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/astroboy1183/iit-patna-progress-dashboard/dispatches \
+            -d '{"event_type": "course-updated"}'
