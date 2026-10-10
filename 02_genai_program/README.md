@@ -1,6 +1,6 @@
 # GenAI program: week by week
 
-My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for Developers*, organized by course week. Theory weeks have lecture notes; hands-on weeks also have the code I built. Projects from the Sunday live sessions are kept separately in [`live_sessions/`](live_sessions).
+My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for Developers*, organized by course week. Theory weeks have lecture notes; hands-on weeks also have the code I built. Projects from the Sunday live sessions are kept separately in [`03_live_sessions/`](../03_live_sessions) at the repo root, because everything here is pre-recorded.
 
 | Week | Theory notes | Hands-on |
 |---|---|---|
@@ -8,9 +8,6 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | [Week 2](week_02) | [Lecture 5](week_02/notes): the developer mindset | [Cloud APIs vs local models](week_02/01_API_VS_local) · [CLI chatbot](week_02/02_chatbot) · [Streamlit chat assistant](week_02/03_capstone) |
 | [Week 3](week_03) | [Lectures 7–8](week_03/notes): prompt tuning vs fine-tuning, LoRA and QLoRA | — |
 
-| Live session | What it is |
-|---|---|
-| [01 · Call-transcript classification and QA](live_sessions/01_call_transcript_qa) | A LangChain pipeline that classifies support calls and scores tone, resolution and knowledge accuracy with structured outputs |
 
 ## Lecture notes
 

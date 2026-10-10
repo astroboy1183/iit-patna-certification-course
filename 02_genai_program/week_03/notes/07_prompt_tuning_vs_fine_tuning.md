@@ -28,7 +28,7 @@ Guide the model with natural-language instructions, **without changing its weigh
 | Anyone can do it: it's just text | Less reliable on its own for high-stakes production use |
 | Great for rapid prototyping | Limited by the context window and per-call token cost |
 
-In practice, production apps reduce the inconsistency with structure around the prompt: fixed templates, low temperature, output schemas and validation. My live-session notebook does this with `PromptTemplate` + Pydantic output parsers (`../../live_sessions/01_call_transcript_qa/experiment.ipynb`).
+In practice, production apps reduce the inconsistency with structure around the prompt: fixed templates, low temperature, output schemas and validation. My live-session notebook does this with `PromptTemplate` + Pydantic output parsers (`../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb`).
 
 ## Fine-tuning
 

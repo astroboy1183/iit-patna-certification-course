@@ -66,7 +66,7 @@ This makes solutions **debuggable** (you can test each step), **reusable** (swap
 
 > Think like a **workflow designer**, not a model tuner.
 
-My live-session notebook follows this shape: **input** = call transcripts (CSV) → **process** = classify each call, route it to the right evaluations, score tone / resolution / knowledge → **output** = one results table (`../../live_sessions/01_call_transcript_qa/experiment.ipynb`).
+My live-session notebook follows this shape: **input** = call transcripts (CSV) → **process** = classify each call, route it to the right evaluations, score tone / resolution / knowledge → **output** = one results table (`../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb`).
 
 ## Key developer skills for the GenAI era
 

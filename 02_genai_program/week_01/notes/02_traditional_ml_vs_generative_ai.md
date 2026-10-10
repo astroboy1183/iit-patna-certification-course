@@ -40,7 +40,7 @@ Example: a support system where
 - a **traditional classifier** routes each ticket (billing / claims / complaint), which is fast, cheap and measurable, and
 - an **LLM** drafts the reply for that ticket.
 
-My live-session project does a version of this with an LLM for both steps: it classifies call transcripts into `billing`, `claims`, `complaint` and `general_query`, then evaluates them (see `../../live_sessions/01_call_transcript_qa/experiment.ipynb`).
+My live-session project does a version of this with an LLM for both steps: it classifies call transcripts into `billing`, `claims`, `complaint` and `general_query`, then evaluates them (see `../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb`).
 
 ## How to choose
 

@@ -59,7 +59,7 @@
 5. **Keep a human in the loop** for high-stakes decisions (health, finance, hiring, legal).
 
 ### What this looks like in code
-- **Validate model output** instead of trusting it. In my live-session project, Pydantic models reject an LLM score outside 1–5 (`../../live_sessions/01_call_transcript_qa/experiment.ipynb`).
+- **Validate model output** instead of trusting it. In my live-session project, Pydantic models reject an LLM score outside 1–5 (`../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb`).
 - **Never send secrets or unnecessary personal data** to a model; keep API keys in `.env`, never in code.
 - **Log prompts and responses carefully**: they can contain personal data.
 

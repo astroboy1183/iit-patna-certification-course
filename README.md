@@ -10,7 +10,8 @@ My code, notes, and practice assignments from the **Certificate Program in Gener
 | Folder | Contents |
 |---|---|
 | [01_Python_Programming](01_Python_Programming) | Python foundations: numbered lessons and practice assignments |
-| [02_genai_program](02_genai_program) | The GenAI program week by week: lecture notes, hands-on projects, and live-session projects |
+| [02_genai_program](02_genai_program) | The GenAI program week by week: pre-recorded lecture notes and hands-on projects |
+| [03_live_sessions](03_live_sessions) | Projects built in the Sunday live sessions |
 
 Each project folder has its own `requirements.txt` and its own virtual environment. See [Setup](#setup).
 
@@ -82,13 +83,19 @@ A web chat UI with conversation memory, routing to OpenAI or Gemini from [config
 - [app.py](02_genai_program/week_02/03_capstone/app.py): the Streamlit chat interface and session history
 - [llm_providers.py](02_genai_program/week_02/03_capstone/llm_providers.py): OpenAI and Gemini calls behind one `run_llm()` router
 
-### Live session 01 · [Call-transcript classification and QA](02_genai_program/live_sessions/01_call_transcript_qa)
+---
+
+## 03 · Live sessions
+
+Projects built during the program's Sunday live sessions.
+
+### Live session 01 · [Call-transcript classification and QA](03_live_sessions/01_call_transcript_qa)
 
 Built in the Sunday live session: a LangChain pipeline that classifies customer-support calls (`billing`, `claims`, `complaint`, `general_query`) and scores tone, resolution quality and knowledge accuracy with Pydantic-validated outputs.
 
-- [experiment.ipynb](02_genai_program/live_sessions/01_call_transcript_qa/experiment.ipynb): the pipeline, built step by step
-- [config/config.json](02_genai_program/live_sessions/01_call_transcript_qa/config/config.json): models, temperature, evaluation criteria and labels
-- [data/](02_genai_program/live_sessions/01_call_transcript_qa/data): sample call transcripts
+- [experiment.ipynb](03_live_sessions/01_call_transcript_qa/experiment.ipynb): the pipeline, built step by step
+- [config/config.json](03_live_sessions/01_call_transcript_qa/config/config.json): models, temperature, evaluation criteria and labels
+- [data/](03_live_sessions/01_call_transcript_qa/data): sample call transcripts
 
 ---
 
