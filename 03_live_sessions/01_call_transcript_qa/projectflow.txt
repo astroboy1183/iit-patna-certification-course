@@ -1,0 +1,17 @@
+.env + config.json
+
+utils/config_loader.py
+-> load .env + config.json
+
+utils/llm_loader.py
+-> Initialize llm 
+
+src/components/classification.py
+
+src/pipeline/pipeline.py
+
+src/components/evaluation.py
+src/pipeline/pipeline.py
+
+src/components/reporting.py
+src/pipeline/pipeline.py
