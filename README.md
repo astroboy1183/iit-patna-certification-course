@@ -56,7 +56,7 @@ Full index with lecture notes and key ideas: [02_genai_program/README.md](02_gen
 | [Week 1](02_genai_program/week_01) | [Lectures 0–4](02_genai_program/week_01/notes): roadmap, what GenAI is, ML vs GenAI, how LLMs work, Responsible AI | — |
 | [Week 2](02_genai_program/week_02) | [Lecture 5](02_genai_program/week_02/notes): the developer mindset | Cloud APIs vs local models · CLI chatbot · Streamlit chat assistant (below) |
 | [Week 3](02_genai_program/week_03) | [Lectures 7–8](02_genai_program/week_03/notes): prompt tuning vs fine-tuning, LoRA and QLoRA | — |
-| [Week 4](02_genai_program/week_04) | [Lecture 10](02_genai_program/week_04/notes): progress summary and learning recap | [LoRA fine-tuning of phi-1.5 on CPU](02_genai_program/week_04/Finetuning-Project) |
+| [Week 4](02_genai_program/week_04) | [Lectures 6, 10–18](02_genai_program/week_04/notes): APIs vs local models, recap, LangChain (models, prompts, structured output, chains, memory, runnables), intro to RAG | [LoRA fine-tuning of phi-1.5 on CPU](02_genai_program/week_04/Finetuning-Project) |
 
 ### Week 2 · [01_API_VS_local](02_genai_program/week_02/01_API_VS_local): calling LLMs through cloud APIs and locally
 

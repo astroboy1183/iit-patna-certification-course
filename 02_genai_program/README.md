@@ -7,7 +7,7 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | [Week 1](week_01) | [Lectures 0–4](week_01/notes): roadmap, what GenAI is, ML vs GenAI, how LLMs work, Responsible AI | — |
 | [Week 2](week_02) | [Lecture 5](week_02/notes): the developer mindset | [Cloud APIs vs local models](week_02/01_API_VS_local) · [CLI chatbot](week_02/02_chatbot) · [Streamlit chat assistant](week_02/03_capstone) |
 | [Week 3](week_03) | [Lectures 7–8](week_03/notes): prompt tuning vs fine-tuning, LoRA and QLoRA | — |
-| [Week 4](week_04) | [Lecture 10](week_04/notes): progress summary and learning recap | [LoRA fine-tuning of phi-1.5 on CPU](week_04/Finetuning-Project) |
+| [Week 4](week_04) | [Lectures 6, 10–18](week_04/notes): APIs vs local models, recap, LangChain (models, prompts, structured output, chains, memory, runnables), intro to RAG | [LoRA fine-tuning of phi-1.5 on CPU](week_04/Finetuning-Project) |
 
 
 ## Lecture notes
@@ -20,11 +20,20 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | 3 | [What are LLMs?](week_01/notes/03_what_are_llms.md) | 1 |
 | 4 | [Responsible AI](week_01/notes/04_responsible_ai.md) | 1 |
 | 5 | [The developer mindset in GenAI](week_02/notes/05_developer_mindset_in_genai.md) | 2 |
+| 6 | [APIs vs local models](week_04/notes/06_api_vs_local_models.md) | 4 |
 | 7 | [Prompt tuning vs fine-tuning](week_03/notes/07_prompt_tuning_vs_fine_tuning.md) | 3 |
 | 8 | [LoRA and QLoRA](week_03/notes/08_lora_and_qlora.md) | 3 |
 | 10 | [Progress summary and learning recap](week_04/notes/10_progress_summary_and_learning_recap.md) | 4 |
+| 11 | [LangChain introduction](week_04/notes/11_langchain_introduction.md) | 4 |
+| 12 | [Models in LangChain](week_04/notes/12_models_in_langchain.md) | 4 |
+| 13 | [Prompt engineering in LangChain](week_04/notes/13_prompt_engineering_in_langchain.md) | 4 |
+| 14 | [Structured output and output parsers](week_04/notes/14_structured_output_and_output_parsers.md) | 4 |
+| 15 | [Chains in LangChain](week_04/notes/15_chains_in_langchain.md) | 4 |
+| 16 | [Memory in LangChain](week_04/notes/16_memory_in_langchain.md) | 4 |
+| 17 | [Runnables in LangChain](week_04/notes/17_runnables_in_langchain.md) | 4 |
+| 18 | [Introduction to RAG](week_04/notes/18_introduction_to_rag.md) | 4 |
 
-Notes are numbered like the course slides.
+Notes are numbered like the course slides. Week 4 also has [study resources](week_04/notes/study_resources.md) (frameworks map, terminal cheat sheet, Copilot and Claude API setup).
 
 ## How the lectures fit together
 
@@ -36,6 +45,8 @@ Notes are numbered like the course slides.
 6. **Developer mindset** (Week 2): put it all together. Your job is to orchestrate pre-trained models into modular input → process → output workflows, stay tool-agnostic, and design responsibly.
 7. **Adapting models** (Week 3): start with prompting; fine-tune when you need consistent, domain-specific behaviour; and use LoRA/QLoRA to make fine-tuning affordable.
 8. **Recap** (Week 4): a checkpoint before frameworks. Knowing the building blocks by hand (tokens, embeddings, APIs, prompts, fine-tuning) means LangChain, LangGraph and CrewAI become upgrades, not mysteries.
+9. **LangChain** (Week 4): the same building blocks as standard components: one interface for every model, reusable prompt templates, structured output, and runnables piped into chains with `|`. Memory has moved to LangGraph.
+10. **RAG** (Week 4): when the model needs your data, retrieve the relevant chunks from a vector store and put them in the prompt, instead of retraining.
 
 ## Key ideas so far
 
@@ -53,6 +64,9 @@ Notes are numbered like the course slides.
 12. **Prompting before fine-tuning:** prompting is cheap and flexible but can be inconsistent; fine-tuning gives consistent domain behaviour but needs data and compute. For changing facts, prefer RAG.
 13. **LoRA** freezes the model and trains small adapters (ΔW = A × B, rank r ≪ d, k); **QLoRA** does the same on a 4-bit base model, so a 65B model fits on one 48 GB GPU.
 14. **Foundations before frameworks:** understand the flow data → tokens → embeddings → response, so you know what a framework is doing under the hood.
+15. **Every LangChain component is a runnable** (`invoke`, `batch`, `stream`), so prompts, models, parsers and retrievers compose with `|` (LCEL); the legacy `LLMChain`/`SequentialChain` classes are gone in 1.x.
+16. **Structured output:** prefer `with_structured_output()` on chat models; use parsers like `PydanticOutputParser` otherwise, and make schemas strict (`Literal`, `list[str]`) so bad output fails loudly.
+17. **RAG pipeline:** load → split → embed → store (once), then retrieve → augment the prompt → generate (per question). It grounds answers and reduces hallucinations, but doesn't eliminate them.
 
 ## Running the code
 
