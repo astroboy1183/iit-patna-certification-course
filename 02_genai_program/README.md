@@ -7,6 +7,7 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | [Week 1](week_01) | [Lectures 0–4](week_01/notes): roadmap, what GenAI is, ML vs GenAI, how LLMs work, Responsible AI | — |
 | [Week 2](week_02) | [Lecture 5](week_02/notes): the developer mindset | [Cloud APIs vs local models](week_02/01_API_VS_local) · [CLI chatbot](week_02/02_chatbot) · [Streamlit chat assistant](week_02/03_capstone) |
 | [Week 3](week_03) | [Lectures 7–8](week_03/notes): prompt tuning vs fine-tuning, LoRA and QLoRA | — |
+| [Week 4](week_04) | [Lecture 10](week_04/notes): progress summary and learning recap | [LoRA fine-tuning of phi-1.5 on CPU](week_04/Finetuning-Project) |
 
 
 ## Lecture notes
@@ -21,6 +22,7 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | 5 | [The developer mindset in GenAI](week_02/notes/05_developer_mindset_in_genai.md) | 2 |
 | 7 | [Prompt tuning vs fine-tuning](week_03/notes/07_prompt_tuning_vs_fine_tuning.md) | 3 |
 | 8 | [LoRA and QLoRA](week_03/notes/08_lora_and_qlora.md) | 3 |
+| 10 | [Progress summary and learning recap](week_04/notes/10_progress_summary_and_learning_recap.md) | 4 |
 
 Notes are numbered like the course slides.
 
@@ -33,6 +35,7 @@ Notes are numbered like the course slides.
 5. **Responsible AI**: because these systems generate content that people act on, building in safeguards is part of the job.
 6. **Developer mindset** (Week 2): put it all together. Your job is to orchestrate pre-trained models into modular input → process → output workflows, stay tool-agnostic, and design responsibly.
 7. **Adapting models** (Week 3): start with prompting; fine-tune when you need consistent, domain-specific behaviour; and use LoRA/QLoRA to make fine-tuning affordable.
+8. **Recap** (Week 4): a checkpoint before frameworks. Knowing the building blocks by hand (tokens, embeddings, APIs, prompts, fine-tuning) means LangChain, LangGraph and CrewAI become upgrades, not mysteries.
 
 ## Key ideas so far
 
@@ -49,6 +52,7 @@ Notes are numbered like the course slides.
 11. **We don't train, we orchestrate:** GenAI apps are prompts + pipelines + integrations around pre-trained models; think in **input → process → output** workflows and stay **tool-agnostic**.
 12. **Prompting before fine-tuning:** prompting is cheap and flexible but can be inconsistent; fine-tuning gives consistent domain behaviour but needs data and compute. For changing facts, prefer RAG.
 13. **LoRA** freezes the model and trains small adapters (ΔW = A × B, rank r ≪ d, k); **QLoRA** does the same on a 4-bit base model, so a 65B model fits on one 48 GB GPU.
+14. **Foundations before frameworks:** understand the flow data → tokens → embeddings → response, so you know what a framework is doing under the hood.
 
 ## Running the code
 
