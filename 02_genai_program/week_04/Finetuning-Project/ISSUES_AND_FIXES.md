@@ -162,9 +162,11 @@ tokenized = dataset.map(tokenize, fn_kwargs={"tokenizer": tokenizer})
 
 ### 10. `RuntimeError: "LayerNormKernelImpl" not implemented for 'Half'`
 
-**Cause:** the model was loaded with `torch_dtype=torch.float16`. Half precision is a **GPU** format; on CPU, PyTorch 2.2 doesn't implement every operation for it, and LayerNorm is the first one phi-1.5 hits. Loading and applying LoRA worked; it crashed at the first training step. It works for the instructor on a GPU.
+**Cause:** the model was loaded with `torch_dtype=torch.float16` (half precision). **PyTorch 2.2.2**, the version pinned in `requirements.txt`, has no half-precision LayerNorm on CPU, and LayerNorm is the first such operation phi-1.5 hits. Loading and applying LoRA worked; it crashed at the first training step.
 
-**Fix:** full precision on CPU:
+**Why it worked for the instructor (also CPU-only, on Windows):** newer PyTorch added half-precision LayerNorm on CPU. Tested on CPU: 2.2.2 fails with this exact error; 2.3.1 and 2.5.1 run it forwards and backwards. So the instructor most likely has PyTorch 2.3 or newer installed, which would mean his environment doesn't exactly match the pinned `requirements.txt`. The other possibility is that his copy of the script doesn't load the model in `float16` at all. Checking `python -c "import torch; print(torch.__version__)"` on his machine would settle it.
+
+**Fix:** either install PyTorch 2.3 or newer, or load in full precision on CPU:
 ```python
 model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, torch_dtype=torch.float32)
 ```
