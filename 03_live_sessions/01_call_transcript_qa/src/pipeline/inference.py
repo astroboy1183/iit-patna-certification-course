@@ -15,7 +15,6 @@ import json
 import pprint
 
 import pandas as pd
-
 from src.components.classification import get_classification_prompt
 from src.components.evaluation import (
     get_knowledge_chain,
@@ -76,11 +75,9 @@ def infer_transcript(transcript, chains):
     }
 
 
-def run_inference(data_path="data/transcripts.xlsx", output_path="data/output.xlsx"):
-    """Run the pipeline on every transcript in data_path; save to output_path if given."""
+def run_full_pipeline(df, output_path=None):
     chains = load_chains()
 
-    df = load_transcripts(data_path)
     df = run_classification(df, chains["classification"])
     df = apply_routing(df)
     df = apply_evaluations(
@@ -131,7 +128,7 @@ def main():
         result = infer_transcript(args.transcript, load_chains())
         pprint.pprint(result, sort_dicts=False, width=100)
     else:
-        df = run_inference(args.data, args.output)
+        df = run_full_pipeline(load_transcripts(args.data), args.output)
         with pd.option_context("display.max_columns", None, "display.width", 200):
             columns = [
                 "call_id",

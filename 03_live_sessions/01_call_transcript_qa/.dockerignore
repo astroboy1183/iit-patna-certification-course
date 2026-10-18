@@ -1,0 +1,26 @@
+# Secrets: never bake API keys into the image (pass them at run time with --env-file)
+.env
+
+# Local environments, caches and tooling
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.git
+.gitignore
+
+# Not needed to serve the API
+*.ipynb
+rough.py
+projectflow.txt
+Dockerfile
+.dockerignore
+
+# Files created by /evaluate and main.py runs
+data/output*.xlsx
+data/*-*-*-*-*.csv
+data/*-*-*-*-*.xlsx
