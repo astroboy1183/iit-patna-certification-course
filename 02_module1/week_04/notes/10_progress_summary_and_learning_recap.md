@@ -50,7 +50,7 @@ The hands-on work taught a few things the slides don't:
 
 - **Most of the work is engineering around the model:** environments, versions, config files, retries and error handling, more than the model call itself.
 - **The environment matters as much as the code.** The fine-tuning project only ran after fixing Python-version and library-version mismatches and switching from GPU settings to CPU ones (see [ISSUES_AND_FIXES.md](../Finetuning-Project/ISSUES_AND_FIXES.md)).
-- **Validate model output.** Structured outputs (Pydantic schemas) catch the cases where the model returns the wrong shape, which happened in my [live-session project](../../../03_live_sessions/01_call_transcript_qa).
+- **Validate model output.** Structured outputs (Pydantic schemas) catch the cases where the model returns the wrong shape, which happened in my [live-session project](../../../99_live_sessions/01_call_transcript_qa).
 
 ## Check yourself
 

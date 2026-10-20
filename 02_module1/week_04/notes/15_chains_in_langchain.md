@@ -188,9 +188,9 @@ The slide says "consider Runnables" for deep chains, but LCEL chains already *ar
 
 ### How my call-transcript QA project fits
 
-My live-session project ([`src/pipeline/pipeline.py`](../../../03_live_sessions/01_call_transcript_qa/src/pipeline/pipeline.py)) is a **classification → routing → evaluation → report** pipeline:
+My live-session project ([`src/pipeline/pipeline.py`](../../../99_live_sessions/01_call_transcript_qa/src/pipeline/pipeline.py)) is a **classification → routing → evaluation → report** pipeline:
 - each LLM step is a small `prompt | llm | parser` chain with a Pydantic parser (modular, validated between steps);
-- the router ([`src/components/router.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/router.py)) is plain Python that maps `call_type` to an evaluation plan (logic where reliability matters);
+- the router ([`src/components/router.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/router.py)) is plain Python that maps `call_type` to an evaluation plan (logic where reliability matters);
 - each step catches exceptions per call, so one bad reply doesn't stop the whole run.
 
 Two things I could improve with this lecture's tools:

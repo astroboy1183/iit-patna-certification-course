@@ -125,7 +125,7 @@ print(route.invoke({"call_type": "complaint"}))      # ['tone_empathy', 'resolut
 print(route.invoke({"call_type": "general_query"}))  # ['knowledge_accuracy']
 ```
 
-This is the same logic as `route_call` in my project's [router.py](../../../03_live_sessions/01_call_transcript_qa/src/components/router.py). The docs now prefer a plain `RunnableLambda` whose function returns the runnable to run; anything beyond simple routing (loops, retries, state) belongs in LangGraph.
+This is the same logic as `route_call` in my project's [router.py](../../../99_live_sessions/01_call_transcript_qa/src/components/router.py). The docs now prefer a plain `RunnableLambda` whose function returns the runnable to run; anything beyond simple routing (loops, retries, state) belongs in LangGraph.
 
 ## Chains vs runnables
 
@@ -144,7 +144,7 @@ Two caveats the slides skip:
 
 ## In my project: the call-transcript QA pipeline
 
-My live-session project ([experiment.ipynb](../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb), [src/](../../../03_live_sessions/01_call_transcript_qa/src)) already builds runnables: `classification_chain = prompt | llm | parser`, and the same shape for tone, knowledge, resolution and the final report. But [pipeline.py](../../../03_live_sessions/01_call_transcript_qa/src/pipeline/pipeline.py) uses them one call at a time:
+My live-session project ([experiment.ipynb](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb), [src/](../../../99_live_sessions/01_call_transcript_qa/src)) already builds runnables: `classification_chain = prompt | llm | parser`, and the same shape for tone, knowledge, resolution and the final report. But [pipeline.py](../../../99_live_sessions/01_call_transcript_qa/src/pipeline/pipeline.py) uses them one call at a time:
 
 | What it does now | Runnable feature that fits |
 |---|---|

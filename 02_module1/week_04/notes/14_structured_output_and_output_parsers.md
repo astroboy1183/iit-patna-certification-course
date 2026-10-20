@@ -88,7 +88,7 @@ Used when the model can't enforce a schema itself. A parser does two jobs: `get_
 
 ### PydanticOutputParser in a chain
 
-The pattern from my live-session project ([`src/components/classification.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/classification.py)), runnable offline with a fake model:
+The pattern from my live-session project ([`src/components/classification.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/classification.py)), runnable offline with a fake model:
 
 ```python
 from typing import Literal
@@ -120,11 +120,11 @@ print(chain.invoke({"transcript": "I was charged twice this month."}))
 
 ### Lessons from my call-transcript QA project
 
-Two real bugs from [`experiment.ipynb`](../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb) show why the schema's types matter:
+Two real bugs from [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb) show why the schema's types matter:
 
 | Bug | Cause | Fix |
 |---|---|---|
-| `OutputParserException` on the final report | The model returned `"recommendation": ["…", "…"]` (a JSON list) but the field was typed `str` | Type the field as `list[str]` ([`src/components/reporting.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/reporting.py)) |
+| `OutputParserException` on the final report | The model returned `"recommendation": ["…", "…"]` (a JSON list) but the field was typed `str` | Type the field as `list[str]` ([`src/components/reporting.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/reporting.py)) |
 | Off-list labels slip through | `call_type: str` accepts any string, e.g. `"refund"`; my router's `else` branch then quietly treats it as a general query | Use `Literal["billing", "claims", "complaint", "general_query"]` so a wrong label fails at parse time |
 
 ```python
@@ -136,7 +136,7 @@ except OutputParserException as e:
     print("rejected:", type(e).__name__)   # Literal catches the off-list label
 ```
 
-The rule: make the schema as strict as the downstream code expects. Bounds like `Field(ge=1, le=5)` (as in [`src/components/evaluation.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/evaluation.py)) do the same job for scores.
+The rule: make the schema as strict as the downstream code expects. Bounds like `Field(ge=1, le=5)` (as in [`src/components/evaluation.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/evaluation.py)) do the same job for scores.
 
 ## Repairing broken output: `OutputFixingParser`
 

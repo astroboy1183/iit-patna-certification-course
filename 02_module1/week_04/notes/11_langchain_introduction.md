@@ -172,16 +172,16 @@ Compared with the f-string version: each step is a named, reusable object; swapp
 
 ### Before and after in my own code
 
-My [call-transcript QA project](../../../03_live_sessions/01_call_transcript_qa) is the "after" picture:
+My [call-transcript QA project](../../../99_live_sessions/01_call_transcript_qa) is the "after" picture:
 
 | Problem in my Week 2 code | How the live-session project solves it with LangChain |
 |---|---|
-| `if/elif` per provider in `llm_provider.py`, with different calls and response fields | [`src/utils/llm_loader.py`](../../../03_live_sessions/01_call_transcript_qa/src/utils/llm_loader.py) still picks the provider, but returns `ChatOpenAI` or `ChatGoogleGenerativeAI`, and everything downstream treats them the same |
-| Prompts as f-strings | [`src/components/classification.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/classification.py) uses `PromptTemplate` with `partial_variables` for the labels and format instructions |
+| `if/elif` per provider in `llm_provider.py`, with different calls and response fields | [`src/utils/llm_loader.py`](../../../99_live_sessions/01_call_transcript_qa/src/utils/llm_loader.py) still picks the provider, but returns `ChatOpenAI` or `ChatGoogleGenerativeAI`, and everything downstream treats them the same |
+| Prompts as f-strings | [`src/components/classification.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/classification.py) uses `PromptTemplate` with `partial_variables` for the labels and format instructions |
 | Reading `.text` or `choices[0].message.content` and hoping it's the right shape | `PydanticOutputParser` returns a validated `ClassificationOutput` object |
 | Glue code between steps | `prompt \| llm \| parser`, then a router and separate evaluation and report chains |
 
-One thing I learnt along the way: in [`experiment.ipynb`](../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb) I rebuilt `prompt | llm | parser` inside the loop for every transcript. In `src/pipeline/inference.py` the chains are built **once** (`build_chains`) and reused. A chain is a reusable object, not a function call, so build it once and invoke it many times.
+One thing I learnt along the way: in [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb) I rebuilt `prompt | llm | parser` inside the loop for every transcript. In `src/pipeline/inference.py` the chains are built **once** (`build_chains`) and reused. A chain is a reusable object, not a function call, so build it once and invoke it many times.
 
 What's still missing is memory: the project is single-turn, and the capstone's hand-rolled history is what [Lecture 16](16_memory_in_langchain.md) replaces.
 

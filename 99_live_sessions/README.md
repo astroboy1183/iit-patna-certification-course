@@ -1,6 +1,6 @@
 # Live sessions
 
-Projects built during the program's Sunday live sessions. The pre-recorded lectures and their projects are in [`02_genai_program`](../02_genai_program).
+Projects built during the program's Sunday live sessions. The pre-recorded lectures and their projects are in [`02_module1`](../02_module1).
 
 | # | Project | What it is |
 |---|---|---|

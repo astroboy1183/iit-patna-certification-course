@@ -129,9 +129,9 @@ Embedding models have a different interface (`embed_query`, `embed_documents`) b
 
 ## In my project
 
-My call-transcript QA project ([`llm_loader.py`](../../../03_live_sessions/01_call_transcript_qa/src/utils/llm_loader.py), first built in [`experiment.ipynb`](../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb)) is this lecture in practice:
+My call-transcript QA project ([`llm_loader.py`](../../../99_live_sessions/01_call_transcript_qa/src/utils/llm_loader.py), first built in [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb)) is this lecture in practice:
 - it reads `LLM_PROVIDER` from the environment and builds either `ChatOpenAI` or `ChatGoogleGenerativeAI`;
-- model names and `temperature` (0.3, for steadier scoring) come from [`config/config.json`](../../../03_live_sessions/01_call_transcript_qa/config/config.json), not from code;
+- model names and `temperature` (0.3, for steadier scoring) come from [`config/config.json`](../../../99_live_sessions/01_call_transcript_qa/config/config.json), not from code;
 - everything downstream (`prompt | llm | parser` in `src/components/`) works with either model without changes.
 
 Two things the lecture suggests improving:

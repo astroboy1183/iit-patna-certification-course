@@ -208,10 +208,10 @@ The best prompt engineers think in systems, not only in wording:
 
 ## In my project
 
-The call-transcript QA project ([`src/components/`](../../../03_live_sessions/01_call_transcript_qa/src/components/), first built in [`experiment.ipynb`](../../../03_live_sessions/01_call_transcript_qa/experiment.ipynb)) uses most of this lecture:
+The call-transcript QA project ([`src/components/`](../../../99_live_sessions/01_call_transcript_qa/src/components/), first built in [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb)) uses most of this lecture:
 - **Templates, not concatenation:** each task (classification, tone, knowledge, resolution, final report) has its own `PromptTemplate` with a `{transcript}` or `{evaluation_outputs}` variable.
 - **Role prompting:** every template opens with a persona, e.g. "You are a quality assurance assistant for a customer support team." (written inside a single `PromptTemplate`, not a separate system message).
-- **Partial variables:** [`classification.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/classification.py) fills `labels` from `config.json`, and [`evaluation.py`](../../../03_live_sessions/01_call_transcript_qa/src/components/evaluation.py) fills `min_score` / `max_score`, so the chain is invoked with just the transcript.
+- **Partial variables:** [`classification.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/classification.py) fills `labels` from `config.json`, and [`evaluation.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/evaluation.py) fills `min_score` / `max_score`, so the chain is invoked with just the transcript.
 - **Structured output:** `format_instructions` comes from `PydanticOutputParser.get_format_instructions()` and is passed as a partial variable, so its JSON braces don't clash with the template syntax.
 - **Reuse across models:** the same `prompt | llm | parser` chains run on OpenAI or Gemini, depending on `LLM_PROVIDER`.
 

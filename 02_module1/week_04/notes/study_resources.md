@@ -26,7 +26,7 @@ Reference material shared alongside the Week 4 lectures: a map of ML/GenAI frame
 
 **Quick rule of thumb:** pandas + NumPy for data → scikit-learn / XGBoost for classical ML → PyTorch / TensorFlow for deep learning → Transformers / LangChain for GenAI → MLflow / DVC for MLOps.
 
-Where I've used them so far: pandas in the [live-session pipeline](../../../03_live_sessions/01_call_transcript_qa); Transformers, PEFT and PyTorch in the [fine-tuning project](../Finetuning-Project); LangChain in the live-session project.
+Where I've used them so far: pandas in the [live-session pipeline](../../../99_live_sessions/01_call_transcript_qa); Transformers, PEFT and PyTorch in the [fine-tuning project](../Finetuning-Project); LangChain in the live-session project.
 
 ## 2. Terminal commands: Windows vs macOS / Linux
 

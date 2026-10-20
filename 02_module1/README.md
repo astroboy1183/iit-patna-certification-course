@@ -1,6 +1,6 @@
 # GenAI program: week by week
 
-My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for Developers*, organized by course week. Theory weeks have lecture notes; hands-on weeks also have the code I built. Projects from the Sunday live sessions are kept separately in [`03_live_sessions/`](../03_live_sessions) at the repo root, because everything here is pre-recorded.
+My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for Developers*, organized by course week. Theory weeks have lecture notes; hands-on weeks also have the code I built. Projects from the Sunday live sessions are kept separately in [`99_live_sessions/`](../99_live_sessions) at the repo root, because everything here is pre-recorded.
 
 | Week | Theory notes | Hands-on |
 |---|---|---|
