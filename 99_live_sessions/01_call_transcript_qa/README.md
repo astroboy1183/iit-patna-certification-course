@@ -52,3 +52,15 @@ In `-p 8000:8000`, the left number is the laptop's port and the right one is the
 - The container's port never clashes with anything on the laptop.
 - The laptop's port must be free. If `uvicorn app:app` is still running locally, `docker run` fails with `bind: address already in use`. Stop uvicorn (Ctrl+C), or map a different laptop port with `-p 8001:8000` and open `localhost:8001/docs`.
 - Without `-p` the container still runs, but nothing on the laptop can reach it.
+
+## Notes: deploying it (live session)
+
+| # | Topic |
+|---|---|
+| 1 | [Deployment architectures](notes/01_deployment_architectures.md): EC2 vs ECS + Fargate vs Lambda, and why containers fit this app |
+| 2 | [Deploying on AWS](notes/02_deploying_on_aws_ecs_fargate.md): Docker → ECR → ECS + Fargate → ALB, the API key, new releases, troubleshooting |
+| 3 | [The same on Azure and GCP](notes/03_deploying_on_azure_and_gcp.md): Container Apps + ACR, Cloud Run + Artifact Registry |
+| 4 | [AWS cleanup and costs](notes/04_aws_cleanup_and_costs.md): what bills, the deletion order, pausing |
+| 5 | [After deployment](notes/05_after_deployment_roadmap.md): monitoring, scaling, HTTPS, CI/CD, secrets, IaC |
+
+The notes follow the session's guides and mark where I've corrected or added to them.
