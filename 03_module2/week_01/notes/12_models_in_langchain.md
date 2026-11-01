@@ -1,4 +1,4 @@
-# Lecture 12 · Models in LangChain (Week 4)
+# Lecture 12 · Models in LangChain (Module 2 · Week 1)
 
 ## Why a model abstraction matters
 
@@ -11,7 +11,7 @@ Code written directly against one SDK is hard to move to another. LangChain puts
 
 > Analogy from the slides: LangChain is a **"universal adapter"** for LLMs. Plug in any model and the rest of the app doesn't notice.
 
-The setup (packages, the `langchain_core` / provider-package split) is in [Lecture 11](11_langchain_introduction.md).
+The setup (packages, the `langchain_core` / provider-package split) is in [Lecture 11](../../../02_module1/week_04/notes/11_langchain_introduction.md).
 
 ## Types of models in LangChain
 
@@ -19,7 +19,7 @@ The setup (packages, the `langchain_core` / provider-package split) is in [Lectu
 |---|---|---|---|
 | **LLMs** (text completion) | `gpt-3.5-turbo-instruct` via `langchain_openai.OpenAI` | string → string | Legacy text completion |
 | **Chat models** | GPT-4o / GPT-4o-mini, Gemini 2.5, Claude, Ollama models | list of messages → `AIMessage` | Almost everything: generation, summarisation, reasoning, multi-turn chat, tool calling |
-| **Embedding models** | `text-embedding-3-small`, `all-MiniLM-L6-v2` | text → vector of floats | Semantic search, RAG, clustering ([Lecture 18](18_introduction_to_rag.md)) |
+| **Embedding models** | `text-embedding-3-small`, `all-MiniLM-L6-v2` | text → vector of floats | Semantic search, RAG, clustering ([Lecture 18](../../../02_module1/week_04/notes/18_introduction_to_rag.md)) |
 | **Multimodal** | Gemini, GPT-4o, LLaVA | messages with text + image/audio blocks → `AIMessage` | Vision and mixed-media tasks |
 
 > **Correction to the slide:** the slide lists GPT-4o, Gemini Pro and Ollama models under **LLMs** and calls chat models a separate family for "multi-turn conversations". In LangChain those modern models are all used as **chat models** (`ChatOpenAI`, `ChatGoogleGenerativeAI`, `ChatOllama`), even for single-turn tasks. The `LLM` class (string in, string out) is the older text-completion interface and is rarely used in new code; the LangChain 1.x docs use "model" to mean chat model. "Multimodal" is not a separate class either: a chat model that supports images accepts image content blocks inside a normal message. Model names also age quickly (Gemini 1.5 has been retired), so check the provider's current model list.
@@ -80,7 +80,7 @@ It still needs the provider package installed; it just imports the right class f
 
 ## One interface for every model
 
-Every chat model is a **Runnable** ([Lecture 17](17_runnables_in_langchain.md)), so they all share the same methods:
+Every chat model is a **Runnable** ([Lecture 17](../../week_02/notes/17_runnables_in_langchain.md)), so they all share the same methods:
 
 | Method | Does |
 |---|---|

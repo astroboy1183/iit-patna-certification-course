@@ -117,7 +117,7 @@ The slides don't cover a third option, **long context**: paste the whole documen
 
 ## In code (minimal, runs offline)
 
-A whole retrieve-then-generate flow in LangChain, using an LCEL chain like the ones in [15_chains_in_langchain.md](15_chains_in_langchain.md) and [17_runnables_in_langchain.md](17_runnables_in_langchain.md). To run it without an API key, it uses a toy keyword embedding and a fake chat model; in a real project, swap in e.g. `OpenAIEmbeddings` and `ChatOpenAI` from `langchain-openai`.
+A whole retrieve-then-generate flow in LangChain, using an LCEL chain like the ones in [15_chains_in_langchain.md](../../../03_module2/week_02/notes/15_chains_in_langchain.md) and [17_runnables_in_langchain.md](../../../03_module2/week_02/notes/17_runnables_in_langchain.md). To run it without an API key, it uses a toy keyword embedding and a fake chat model; in a real project, swap in e.g. `OpenAIEmbeddings` and `ChatOpenAI` from `langchain-openai`.
 
 ```python
 from langchain_core.documents import Document

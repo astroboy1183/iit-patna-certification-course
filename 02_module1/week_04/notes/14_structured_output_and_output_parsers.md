@@ -185,7 +185,7 @@ The slide calls `with_structured_output()` "clean, deterministic JSON". The **sh
 
 > **Takeaway:** prompts shape what the model says; schemas and parsers make it safe for code to use. Prefer `with_structured_output()` with a strict Pydantic model, and fall back to output parsers when the model can't do it natively.
 
-Related: prompt templates and partial variables (Lecture 13, [`13_prompt_engineering_in_langchain.md`](13_prompt_engineering_in_langchain.md)); parsers as links in a chain (Lecture 15, [`15_chains_in_langchain.md`](15_chains_in_langchain.md)).
+Related: prompt templates and partial variables (Lecture 13, [`13_prompt_engineering_in_langchain.md`](../../../03_module2/week_01/notes/13_prompt_engineering_in_langchain.md)); parsers as links in a chain (Lecture 15, [`15_chains_in_langchain.md`](../../../03_module2/week_02/notes/15_chains_in_langchain.md)).
 
 ## Check yourself
 

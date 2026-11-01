@@ -7,7 +7,7 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | [Week 1](week_01) | [Lectures 0–4](week_01/notes): roadmap, what GenAI is, ML vs GenAI, how LLMs work, Responsible AI | — |
 | [Week 2](week_02) | [Lecture 5](week_02/notes): the developer mindset | [Cloud APIs vs local models](week_02/01_API_VS_local) · [CLI chatbot](week_02/02_chatbot) · [Streamlit chat assistant](week_02/03_capstone) |
 | [Week 3](week_03) | [Lectures 7–8](week_03/notes): prompt tuning vs fine-tuning, LoRA and QLoRA | — |
-| [Week 4](week_04) | [Lectures 6, 10–18](week_04/notes): APIs vs local models, recap, LangChain (models, prompts, structured output, chains, memory, runnables), intro to RAG | [LoRA fine-tuning of phi-1.5 on CPU](week_04/Finetuning-Project) |
+| [Week 4](week_04) | [Lectures 6, 10, 11, 14, 18](week_04/notes): APIs vs local models, recap, LangChain intro, structured output, intro to RAG. Lectures 12–13 are in [Module 2 · Week 1](../03_module2/week_01) and 15–17 in [Module 2 · Week 2](../03_module2/week_02) | [LoRA fine-tuning of phi-1.5 on CPU](week_04/Finetuning-Project) |
 
 
 ## Lecture notes
@@ -25,12 +25,12 @@ My work in IIT Patna's *Certificate Program in Generative AI & Agentic AI for De
 | 8 | [LoRA and QLoRA](week_03/notes/08_lora_and_qlora.md) | 3 |
 | 10 | [Progress summary and learning recap](week_04/notes/10_progress_summary_and_learning_recap.md) | 4 |
 | 11 | [LangChain introduction](week_04/notes/11_langchain_introduction.md) | 4 |
-| 12 | [Models in LangChain](week_04/notes/12_models_in_langchain.md) | 4 |
-| 13 | [Prompt engineering in LangChain](week_04/notes/13_prompt_engineering_in_langchain.md) | 4 |
+| 12 | [Models in LangChain](../03_module2/week_01/notes/12_models_in_langchain.md) | Module 2 · 1 |
+| 13 | [Prompt engineering in LangChain](../03_module2/week_01/notes/13_prompt_engineering_in_langchain.md) | Module 2 · 1 |
 | 14 | [Structured output and output parsers](week_04/notes/14_structured_output_and_output_parsers.md) | 4 |
-| 15 | [Chains in LangChain](week_04/notes/15_chains_in_langchain.md) | 4 |
-| 16 | [Memory in LangChain](week_04/notes/16_memory_in_langchain.md) | 4 |
-| 17 | [Runnables in LangChain](week_04/notes/17_runnables_in_langchain.md) | 4 |
+| 15 | [Chains in LangChain](../03_module2/week_02/notes/15_chains_in_langchain.md) | Module 2 · 2 |
+| 16 | [Memory in LangChain](../03_module2/week_02/notes/16_memory_in_langchain.md) | Module 2 · 2 |
+| 17 | [Runnables in LangChain](../03_module2/week_02/notes/17_runnables_in_langchain.md) | Module 2 · 2 |
 | 18 | [Introduction to RAG](week_04/notes/18_introduction_to_rag.md) | 4 |
 
 Notes are numbered like the course slides. Week 4 also has [study resources](week_04/notes/study_resources.md) (frameworks map, terminal cheat sheet, Copilot and Claude API setup).

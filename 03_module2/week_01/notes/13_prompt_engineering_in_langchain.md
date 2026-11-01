@@ -1,4 +1,4 @@
-# Lecture 13 · Prompt engineering in LangChain (Week 4)
+# Lecture 13 · Prompt engineering in LangChain (Module 2 · Week 1)
 
 ## What prompt engineering is
 
@@ -12,7 +12,7 @@ The lecture's framing: treat a prompt as **API design**, where the "API" is a la
 | Expected output format | Format instructions / an output schema |
 | Error handling | Validation and parsing of the reply, retries |
 
-The basics (zero-shot vs few-shot, prompting vs fine-tuning) are in [Lecture 7](../../week_03/notes/07_prompt_tuning_vs_fine_tuning.md). This lecture is about doing it **in code**, with LangChain.
+The basics (zero-shot vs few-shot, prompting vs fine-tuning) are in [Lecture 7](../../../02_module1/week_03/notes/07_prompt_tuning_vs_fine_tuning.md). This lecture is about doing it **in code**, with LangChain.
 
 ## Why it matters
 
@@ -90,7 +90,7 @@ messages = chat_template.format_messages(sentence="I love learning.")
 #  HumanMessage('Translate this sentence to French: I love learning.')]
 ```
 
-The slide uses `("user", ...)`; LangChain accepts both `"user"` and `"human"`. To keep a running conversation, add a `MessagesPlaceholder("history")` between the system and human messages ([Lecture 16](16_memory_in_langchain.md)).
+The slide uses `("user", ...)`; LangChain accepts both `"user"` and `"human"`. To keep a running conversation, add a `MessagesPlaceholder("history")` between the system and human messages ([Lecture 16](../../week_02/notes/16_memory_in_langchain.md)).
 
 ### `SystemMessagePromptTemplate`: the persona
 
@@ -154,7 +154,7 @@ Double the braces (`{{ }}`) for literal text. Braces inside variable **values** 
 What LangChain adds:
 - **Parameterised prompts:** templates with variables.
 - **Reuse across LLMs:** the same template pipes into `ChatOpenAI` or `ChatGoogleGenerativeAI`.
-- **Composition:** templates plug into chains, agents and RAG pipelines (`prompt | llm | parser`, [Lecture 15](15_chains_in_langchain.md)).
+- **Composition:** templates plug into chains, agents and RAG pipelines (`prompt | llm | parser`, [Lecture 15](../../week_02/notes/15_chains_in_langchain.md)).
 - **Evaluation and versioning** with LangSmith (LangChain's tracing and evaluation platform), which can store prompts with version history and compare their results on test datasets.
 
 ## Common prompt engineering patterns
@@ -164,7 +164,7 @@ What LangChain adds:
 | **Few-shot** | Teach by example: show input → output pairs before the real input | `FewShotChatMessagePromptTemplate` |
 | **Chain-of-thought** | Ask the model to reason step by step before answering | An instruction in the system or human message |
 | **Role prompting** | Give the model a persona and context | The system message |
-| **Structured output** | Ask for a fixed format (e.g. JSON) so code can parse it reliably | Format instructions + output parsers, or `with_structured_output` ([Lecture 14](14_structured_output_and_output_parsers.md)) |
+| **Structured output** | Ask for a fixed format (e.g. JSON) so code can parse it reliably | Format instructions + output parsers, or `with_structured_output` ([Lecture 14](../../../02_module1/week_04/notes/14_structured_output_and_output_parsers.md)) |
 
 Patterns stack. Role + few-shot, for example:
 
@@ -208,7 +208,7 @@ The best prompt engineers think in systems, not only in wording:
 
 ## In my project
 
-The call-transcript QA project ([`src/components/`](../../../99_live_sessions/01_call_transcript_qa/src/components/), first built in [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb)) uses most of this lecture:
+The call-transcript QA project ([`src/components/`](../../../99_live_sessions/01_call_transcript_qa/src/components), first built in [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb)) uses most of this lecture:
 - **Templates, not concatenation:** each task (classification, tone, knowledge, resolution, final report) has its own `PromptTemplate` with a `{transcript}` or `{evaluation_outputs}` variable.
 - **Role prompting:** every template opens with a persona, e.g. "You are a quality assurance assistant for a customer support team." (written inside a single `PromptTemplate`, not a separate system message).
 - **Partial variables:** [`classification.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/classification.py) fills `labels` from `config.json`, and [`evaluation.py`](../../../99_live_sessions/01_call_transcript_qa/src/components/evaluation.py) fills `min_score` / `max_score`, so the chain is invoked with just the transcript.

@@ -43,11 +43,11 @@ The slide maps each pain point to a LangChain feature. I've added the current (1
 
 | Pain point | Slide's answer | What it is in LangChain 1.x | Covered in |
 |---|---|---|---|
-| Provider lock-in | (lecture write-up) one model interface | Chat model classes (`ChatOpenAI`, `ChatGoogleGenerativeAI`, …), `init_chat_model` | [12_models_in_langchain.md](12_models_in_langchain.md) |
-| Messy prompt logic | Chains, prompt templates | `PromptTemplate`, `ChatPromptTemplate` | [13_prompt_engineering_in_langchain.md](13_prompt_engineering_in_langchain.md) |
+| Provider lock-in | (lecture write-up) one model interface | Chat model classes (`ChatOpenAI`, `ChatGoogleGenerativeAI`, …), `init_chat_model` | [12_models_in_langchain.md](../../../03_module2/week_01/notes/12_models_in_langchain.md) |
+| Messy prompt logic | Chains, prompt templates | `PromptTemplate`, `ChatPromptTemplate` | [13_prompt_engineering_in_langchain.md](../../../03_module2/week_01/notes/13_prompt_engineering_in_langchain.md) |
 | Unstructured output | (lecture write-up) output parsers | Output parsers, `with_structured_output` | [14_structured_output_and_output_parsers.md](14_structured_output_and_output_parsers.md) |
-| Multi-step tasks | Sequential / parallel chains | Pipelines built with `\|` (LCEL), `RunnableParallel` | [15_chains_in_langchain.md](15_chains_in_langchain.md), [17_runnables_in_langchain.md](17_runnables_in_langchain.md) |
-| Manual context handling | Memory (ConversationBuffer, VectorStore, …) | Message history, or a LangGraph checkpointer for agents | [16_memory_in_langchain.md](16_memory_in_langchain.md) |
+| Multi-step tasks | Sequential / parallel chains | Pipelines built with `\|` (LCEL), `RunnableParallel` | [15_chains_in_langchain.md](../../../03_module2/week_02/notes/15_chains_in_langchain.md), [17_runnables_in_langchain.md](../../../03_module2/week_02/notes/17_runnables_in_langchain.md) |
+| Manual context handling | Memory (ConversationBuffer, VectorStore, …) | Message history, or a LangGraph checkpointer for agents | [16_memory_in_langchain.md](../../../03_module2/week_02/notes/16_memory_in_langchain.md) |
 | Bringing in your own data | Embedding models | Embeddings, vector stores, retrievers | [18_introduction_to_rag.md](18_introduction_to_rag.md) |
 | No API/DB integration | Tools & agents | `@tool` + `create_agent` | Later module |
 | Debugging nightmare | LangSmith | LangSmith tracing | Below |
@@ -77,12 +77,12 @@ My live-session project uses `langchain` 1.4, `langchain-core` 1.6, `langchain-o
 
 | # | Block | Mental model | Example | Deep dive |
 |---|---|---|---|---|
-| 1 | **Models** | A black-box function: messages in, message out | `ChatOpenAI`, `OpenAIEmbeddings` | [12](12_models_in_langchain.md) |
-| 2 | **Prompts** | A parameterized template: `f(topic) → prompt` | `PromptTemplate.from_template(...)` | [13](13_prompt_engineering_in_langchain.md) |
+| 1 | **Models** | A black-box function: messages in, message out | `ChatOpenAI`, `OpenAIEmbeddings` | [12](../../../03_module2/week_01/notes/12_models_in_langchain.md) |
+| 2 | **Prompts** | A parameterized template: `f(topic) → prompt` | `PromptTemplate.from_template(...)` | [13](../../../03_module2/week_01/notes/13_prompt_engineering_in_langchain.md) |
 | 3 | **Structured output** | Text → schema → clean object | `PydanticOutputParser` | [14](14_structured_output_and_output_parsers.md) |
-| 4 | **Runnables** | One pipeline step with a standard interface | anything with `.invoke()` | [17](17_runnables_in_langchain.md) |
-| 5 | **Chains** | A sequence of runnables: step 1 → step 2 → step 3 | `prompt \| model \| parser` | [15](15_chains_in_langchain.md) |
-| 6 | **Memory** | A context store: current input + past history | message history | [16](16_memory_in_langchain.md) |
+| 4 | **Runnables** | One pipeline step with a standard interface | anything with `.invoke()` | [17](../../../03_module2/week_02/notes/17_runnables_in_langchain.md) |
+| 5 | **Chains** | A sequence of runnables: step 1 → step 2 → step 3 | `prompt \| model \| parser` | [15](../../../03_module2/week_02/notes/15_chains_in_langchain.md) |
+| 6 | **Memory** | A context store: current input + past history | message history | [16](../../../03_module2/week_02/notes/16_memory_in_langchain.md) |
 | 7 | **Tools & agents** | Tools are the hands; the agent is the mind deciding when to use them | `@tool`, `create_agent` | Later module |
 | 8 | **LangSmith** | A flight recorder for every run | tracing via environment variables | Below |
 
@@ -183,7 +183,7 @@ My [call-transcript QA project](../../../99_live_sessions/01_call_transcript_qa)
 
 One thing I learnt along the way: in [`experiment.ipynb`](../../../99_live_sessions/01_call_transcript_qa/experiment.ipynb) I rebuilt `prompt | llm | parser` inside the loop for every transcript. In `src/pipeline/inference.py` the chains are built **once** (`build_chains`) and reused. A chain is a reusable object, not a function call, so build it once and invoke it many times.
 
-What's still missing is memory: the project is single-turn, and the capstone's hand-rolled history is what [Lecture 16](16_memory_in_langchain.md) replaces.
+What's still missing is memory: the project is single-turn, and the capstone's hand-rolled history is what [Lecture 16](../../../03_module2/week_02/notes/16_memory_in_langchain.md) replaces.
 
 > **Takeaway:** LangChain doesn't make the model smarter. It standardizes everything *around* the model (models, prompts, outputs, steps, memory, tools, tracing) so LLM apps are built from small, swappable parts instead of one-off glue code.
 

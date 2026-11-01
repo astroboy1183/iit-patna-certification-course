@@ -1,4 +1,4 @@
-# Lecture 17 · Runnables in LangChain (Week 4)
+# Lecture 17 · Runnables in LangChain (Module 2 · Week 2)
 
 ## The problem: life before runnables
 
@@ -186,7 +186,7 @@ print(results)   # ['complaint', ValueError('empty transcript'), 'general_query'
 
 ## Why it matters and what's next
 
-- Runnables are the **standard** way to build in LangChain: prompts, models and parsers ([Lectures 12–14](12_models_in_langchain.md)) all speak this interface.
+- Runnables are the **standard** way to build in LangChain: prompts, models and parsers ([Lectures 12–14](../../week_01/notes/12_models_in_langchain.md)) all speak this interface.
 - They're the base of **LangGraph** and agents: a compiled LangGraph graph is itself a runnable (I checked: `isinstance(graph, Runnable)` is `True`), so it has `invoke`, `batch` and `stream` as well.
 - They make apps more **modular** and easier to maintain, and faster where you use batching, parallelism or streaming.
 

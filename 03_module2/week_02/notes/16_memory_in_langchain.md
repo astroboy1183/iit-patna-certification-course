@@ -1,4 +1,4 @@
-# Lecture 16 · Memory in LangChain (Week 4)
+# Lecture 16 · Memory in LangChain (Module 2 · Week 2)
 
 ## Why memory matters
 
@@ -11,8 +11,8 @@ I've already seen both sides of this in my own Week 2 projects:
 
 | Project | What it sends the model | Result |
 |---|---|---|
-| [02_chatbot](../../week_02/02_chatbot/llm_provider.py) | Only the current message | **No memory**: in testing it forgot my name one message after I told it |
-| [03_capstone](../../week_02/03_capstone/app.py) | The whole `st.session_state["history"]` list, every turn | Remembers the conversation, because I resend it each time |
+| [02_chatbot](../../../02_module1/week_02/02_chatbot/llm_provider.py) | Only the current message | **No memory**: in testing it forgot my name one message after I told it |
+| [03_capstone](../../../02_module1/week_02/03_capstone/app.py) | The whole `st.session_state["history"]` list, every turn | Remembers the conversation, because I resend it each time |
 
 So "memory" isn't something the model has. It's something **my code does**: store the conversation and put it back into the prompt.
 
@@ -172,7 +172,7 @@ When the thread passes 4,000 tokens, older messages are replaced by a summary an
 
 **Rule of thumb:** small projects start with a plain buffer or window; assistants that must scale need summaries or retrieval.
 
-> **Memory vs RAG:** the slide's table suggests vector memory for an "FAQ bot", but its own best practices say memory is for the **conversation** and RAG is for **knowledge**. FAQ answers are knowledge: put them in a retriever (see [Lecture 18](18_introduction_to_rag.md)), and keep memory for what this user said.
+> **Memory vs RAG:** the slide's table suggests vector memory for an "FAQ bot", but its own best practices say memory is for the **conversation** and RAG is for **knowledge**. FAQ answers are knowledge: put them in a retriever (see [Lecture 18](../../../02_module1/week_04/notes/18_introduction_to_rag.md)), and keep memory for what this user said.
 
 ## Best practices
 
@@ -184,7 +184,7 @@ When the thread passes 4,000 tokens, older messages are replaced by a summary an
 | **Combine with RAG** | Memory = the conversation; RAG = the documents |
 | **Persist selectively** | Not every session needs storing forever (cost, privacy) |
 
-For context: memory builds on prompt templates ([Lecture 13](13_prompt_engineering_in_langchain.md)) and the pipe syntax from [Lecture 15](15_chains_in_langchain.md) and [Lecture 17](17_runnables_in_langchain.md).
+For context: memory builds on prompt templates ([Lecture 13](../../week_01/notes/13_prompt_engineering_in_langchain.md)) and the pipe syntax from [Lecture 15](15_chains_in_langchain.md) and [Lecture 17](17_runnables_in_langchain.md).
 
 > **Takeaway:** the model never remembers anything. Memory is your code storing the conversation and putting the right part of it back into each prompt. Today that means a trimmed message list or a LangGraph checkpointer, not the old `Conversation*Memory` classes.
 

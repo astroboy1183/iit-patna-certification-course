@@ -1,4 +1,4 @@
-# Lecture 15 · Chains in LangChain (Week 4)
+# Lecture 15 · Chains in LangChain (Module 2 · Week 2)
 
 ## Why chains exist
 
