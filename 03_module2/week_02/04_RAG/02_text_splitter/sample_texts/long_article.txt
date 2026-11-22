@@ -1,0 +1,101 @@
+Introduction:
+Retrieval-Augmented Generation (RAG) is a technique that enhances language model generation by incorporating external knowledge.
+This is typically done by retrieving relevant information from a large corpus of documents and using that information to inform the generation process.
+Challenge:
+Clients often have vast proprietary documents.
+Extracting specific information is like finding a needle in a haystack.
+2. GPT4-Turbo Introduction:
+OpenAI’s GPT4-Turbo can process large documents.
+3. Efficiency Issue:
+“Lost In The Middle” phenomenon hampers efficiency.
+Model forgets content in the middle of its contextual window.
+4. Alternative Approach — Retrieval-Augmented-Generation (RAG):
+Create an index for each document paragraph.
+Swiftly identify pertinent paragraphs.
+Feed selected paragraphs into a Large Language Model (LLM) like GPT4.
+5. Advantages:
+Prevents information overload.
+Enhances result quality by providing only relevant paragraphs.
+The Retrieval Augmented Generation (RAG) Pipeline
+With RAG, the LLM is able to leverage knowledge and information that is not necessarily in its weights by providing it access to external knowledge sources such as databases.
+It leverages a retriever to find relevant contexts to condition the LLM, in this way, RAG is able to augment the knowledge-base of an LLM with relevant documents.
+The retriever here could be any of the following depending on the need for semantic retrieval or not:
+Vector database: Typically, queries are embedded using models like BERT for generating dense vector embeddings. Alternatively, traditional methods like TF-IDF can be used for sparse embeddings. The search is then conducted based on term frequency or semantic similarity.
+Graph database: Constructs a knowledge base from extracted entity relationships within the text. This approach is precise but may require exact query matching, which could be restrictive in some applications.
+Regular SQL database: Offers structured data storage and retrieval but might lack the semantic flexibility of vector databases.
+The image below from Damien Benveniste, PhD talks a bit about the difference between using Graph vs Vector database for RAG.
+
+Graph Databases are favored for Retrieval Augmented Generation (RAG) when compared to Vector Databases. While Vector Databases partition and index data using LLM-encoded vectors, allowing for semantically similar vector retrieval, they may fetch irrelevant data.
+Graph Databases, on the other hand, build a knowledge base from extracted entity relationships in the text, making retrievals concise. However, it requires exact query matching which can be limiting.
+A potential solution could be to combine the strengths of both databases: indexing parsed entity relationships with vector representations in a graph database for more flexible information retrieval. It remains to be seen if such a hybrid model exists.
+After retrieving, you may want to look into filtering the candidates further by adding ranking and/or fine ranking layers that allow you to filter down candidates that do not match your business rules, are not personalized for the user, current context, or response limit.
+Let’s succinctly summarize the process of RAG and then delve into its pros and cons:
+Vector Database Creation: RAG starts by converting an internal dataset into vectors and storing them in a vector database (or a database of your choosing).
+User Input: A user provides a query in natural language, seeking an answer or completion.
+Information Retrieval: The retrieval mechanism scans the vector database to identify segments that are semantically similar to the user’s query (which is also embedded). These segments are then given to the LLM to enrich its context for generating responses.
+Combining Data: The chosen data segments from the database are combined with the user’s initial query, creating an expanded prompt.
+Generating Text: The enlarged prompt, filled with added context, is then given to the LLM, which crafts the final, context-aware response.
+The image below (source) displays the high-level working of RAG.
+
+Difference Between RAG and Gine Tuning of the LLM :
+
+Retrieval systems (RAG) give LLM systems access to factual, access-controlled, timely information. Fine tuning can not do this, so there’s no competition.
+Fine tuning (not RAG) adapts the style, tone, and vocabulary of LLMs so that your linguistic “paint brush” matches the desired domain and style
+All in all, focus on RAG first. A successful LLM application must connect specialized data to the LLM workflow. Once you have a first full application working, you can add fine tuning to improve the style and vocabulary of the system. Fine tuning will not save you if the RAG connection to data is built improperly.
+Choice of the Vector Database :
+
+Building a RAG Pipeline
+The image below (source), gives a visual overview of the three different steps of RAG: Ingestion, Retrieval, and Synthesis/Response Generation.
+Press enter or click to view image in full size
+
+In the sections below, we will go over these key areas.
+Ingestion
+Chunking
+Chunking is the process of dividing the prompts and/or the documents to be retrieved, into smaller, manageable segments or chunks. These chunks can be defined either by a fixed size, such as a specific number of characters, sentences or paragraphs.
+In RAG, each chunk is encoded into an embedding vector for retrieval. Smaller, more precise chunks lead to a finer match between the user’s query and the content, enhancing the accuracy and relevance of the information retrieved.
+Larger chunks might include irrelevant information, introducing noise and potentially reducing the retrieval accuracy. By controlling the chunk size, RAG can maintain a balance between comprehensiveness and precision.
+So the next natural question that comes up is, how do you choose the right chunk size for your use case? The choice of chunk size in RAG is crucial. It needs to be small enough to ensure relevance and reduce noise but large enough to maintain the context’s integrity. Let’s look at a few methods below referred from Pinecone:
+Fixed-size chunking: Simply decide the number of tokens in our chunk along with whether there should be overlap between them or not. Overlap between chunks guarantees there to be minimal semantic context loss between chunks. This option is computationally cheap and simple to implement.
+text = "..." # your text
+from langchain.text_splitter import CharacterTextSplitter
+text_splitter = CharacterTextSplitter(
+    separator = "\n\n",
+    chunk_size = 256,
+    chunk_overlap  = 20
+)
+docs = text_splitter.create_documents([text])
+Context-aware chunking: Content-aware chunking leverages the intrinsic structure of the text to create chunks that are more meaningful and contextually relevant. Here are several approaches to achieving this:
+Sentence Splitting This method aligns with models optimized for embedding sentence-level content. Different tools and techniques can be used for sentence splitting:
+Naive Splitting: A basic method where sentences are split using periods and new lines. Example:
+  text = "..."  # Your text
+   docs = text.split(".")
+NLTK (Natural Language Toolkit): A comprehensive Python library for language processing. NLTK includes a sentence tokenizer that effectively splits text into sentences. Example:
+text = "..."  # Your text
+from langchain.text_splitter import NLTKTextSplitter
+text_splitter = NLTKTextSplitter()
+docs = text_splitter.split_text(text)
+spaCy: An advanced Python library for NLP tasks, spaCy offers efficient sentence segmentation. Example:
+text = "..."  # Your text
+from langchain.text_splitter import SpacyTextSplitter
+text_splitter = SpacyTextSplitter()
+docs = text_splitter.split_text(text)
+Recursive Chunking: Recursive chunking is an iterative method that splits text hierarchically using various separators. It adapts to create chunks of similar size or structure by recursively applying different criteria. Example using LangChain:
+   text = "..."  # Your text
+   from langchain.text_splitter import RecursiveCharacterTextSplitter
+   text_splitter = RecursiveCharacterTextSplitter(
+       chunk_size = 256,
+       chunk_overlap = 20
+   )
+   docs = text_splitter.create_documents([text])
+“As a rule of thumb, if the chunk of text makes sense without the surrounding context to a human, it will make sense to the language model as well. Therefore, finding the optimal chunk size for the documents in the corpus is crucial to ensuring that the search results are accurate and relevant.” (source)
+Embeddings
+Once you have your prompt chunked appropriately, the next step is to embedd it. Embedding prompts and documents in RAG involves transforming both the user’s query (prompt) and the documents in the knowledge base into a format that can be effectively compared for relevance. This process is critical for RAG’s ability to retrieve the most relevant information from its knowledge base in response to a user query. Here’s how it typically works:
+One option to help pick which embedding model would be best suited for your task is to look at HuggingFace’s Massive Text Embedding Benchmark (MTEB) leaderboard.. There is a question of whether a dense or sparse embedding can be used so let’s look into benefits of each below:
+Sparse embedding: Sparse embeddings such as TF-IDF are great for lexical matching the prompt with the documents. Best for applications where keyword relevance is crucial. It’s computationally less intensive but may not capture the deeper semantic meanings in the text.
+Semantic embedding: Semantic embeddings, such as BERT or SentenceBERT lend themselves naturally to the RAG usecase.
+BERT: Suitable for capturing contextual nuances in both the documents and queries. Requires more computational resources compared to sparse embeddings but offers more semantically rich embeddings.
+SentenceBERT: Ideal for scenarios where the context and meaning at the sentence level are important. It strikes a balance between the deep contextual understanding of BERT and the need for concise, meaningful sentence representations. This is usually the preferred route for RAG
+Retrieval
+Let’s look at two different types of retrieval: standard, sentence window, and auto-merging. Each of these approaches has specific strengths and weaknesses, and their suitability depends on the requirements of the RAG task, including the nature of the dataset, the complexity of the queries, and the desired balance between specificity and contextual understanding in the responses.
+Standard/Naive Approach
+As we see in the image below (source), the standard pipeline uses the same text chunk for indexing/embedding as well as the output synthesis.
