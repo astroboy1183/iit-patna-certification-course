@@ -32,7 +32,10 @@ def load_settings(path: Path = CONFIG_FILE) -> dict:
         ) from exc
 
     if not isinstance(settings, dict):
-        raise ValueError("not dictionary")
+        raise ValueError(
+            "config.json must contain one JSON object, written as { ... }, "
+            "with the settings inside it."
+        )
 
     allowed = TEXT_SETTINGS + NUMBER_SETTINGS
 
@@ -78,10 +81,14 @@ DATA_DIR = PROJECT_ROOT / "data"
 VECTOR_STORE_DIR = PROJECT_ROOT / "vector_store"
 
 
-def provider_name():
-    name = str(LLM_PROVIDER).lower().strip()
+def provider_name() -> str:
+    """Return the selected provider, or raise a clear error."""
+    name = str(LLM_PROVIDER).strip().lower()
     if name not in ("openai", "gemini"):
-        raise ValueError(f"Unsupported provider {LLM_PROVIDER}. ")
+        raise ValueError(
+            f"Unsupported provider '{LLM_PROVIDER}'. "
+            "Set llm_provider in config.json to 'openai' or 'gemini'."
+        )
     return name
 
 
@@ -104,7 +111,10 @@ def require_api_key() -> None:
     if provider == "openai":
         if os.getenv("OPENAI_API_KEY", "").strip():
             return
-        raise RuntimeError("Missing OPENAI API Key")
+        raise RuntimeError(
+            "Missing OpenAI API key. Copy .env.example to .env, "
+            "set OPENAI_API_KEY, and restart the app."
+        )
 
     if os.getenv("GOOGLE_API_KEY", "").strip():
         return
